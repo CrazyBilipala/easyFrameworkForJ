@@ -86,7 +86,6 @@
       <version>${jstl.version}</version>
     </dependency>
     <!-- jstl config end-->
-		
 	</dependencies>
 	<build>
 		<finalName>smm</finalName>
