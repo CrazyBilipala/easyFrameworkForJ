@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <!-- 启用spring mvc 注解-->
+    <mvc:annotation-driven>
+    </mvc:annotation-driven>
+    <task:annotation-driven />
+
+    <!-- 自动扫描的包名 ，使Spring支持自动检测组件，如注解的Controller-->
+    <context:component-scan base-package="com.easy.framework.controller"></context:component-scan>
+    <context:component-scan base-package="com.easy.framework.service"/>
+    <context:component-scan base-package="com.easy.framework.dao"/>
+    <context:component-scan base-package="com.easy.framework.task"/>
+    <context:component-scan base-package="com.easy.framework.utils.spring"/>
+    <!--对静态资源的配置-->
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+
+    <!-- 视图解析器:定义跳转的文件的前后缀 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/view/" />
+        <property name="suffix" value=".jsp" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+    </bean>
+</beans>
